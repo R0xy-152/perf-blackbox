@@ -1,0 +1,15 @@
+#!/bin/bash
+BASE="/mnt/c/Users/27079/OneDrive/Desktop/perf-blackbox"
+case "$1" in
+  start)
+    sudo nohup $BASE/scripts/record.sh > /dev/null 2>&1 &
+    echo "Started recording."
+    ;;
+  stop)
+    sudo pkill perf
+    echo "Stopped."
+    ;;
+  query)
+    $BASE/scripts/query.sh "$2" "$3"
+    ;;
+esac
